@@ -1,0 +1,23 @@
+{% extends 'users/base.html' %}
+
+
+
+{% block title %}
+    Удаление объявления
+{% endblock %}
+
+
+{% block content %}
+    <h3>Вы уверены, что хотите удалить объявление?</h3>
+    <hr>
+    <ul>
+        <li>Заголовок | {{ post_delete.title}}</li>
+        <li>Категория | {{ post_delete.category }}</li>
+        <li>Описание | {{ post_delete.description}}</li>
+        <li>Дата создания | {{ post_delete.created|date:'d.m.Y G:i' }}</li>
+    </ul>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Подтвердить">
+    </form>
+{% endblock %}

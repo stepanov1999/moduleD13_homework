@@ -1,0 +1,21 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+
+{% block title %}
+Создание объявления
+{% endblock %}
+
+
+{% block content %}
+<h1>Новое объявление</h1>
+<hr>
+<div class="card-body">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form.as_p }}
+        <input type="submit" value="Сохранить изменения">
+    </form>
+</div>
+{% endblock %}

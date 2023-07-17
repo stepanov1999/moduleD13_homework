@@ -1,0 +1,19 @@
+{% extends 'users/base.html' %}
+
+
+{% block title %}
+    Объявление
+{% endblock title %}
+
+{% block content %}
+    <div class="card-body text-center my-4 card shadow-lg border-0 rounded-lg ">
+        <h1 class="">{{ post.title }}</h1>
+        <hr>
+        <h5 class="my-4">Роль: {{ post.category }}</h5>
+        <p class="my-4">Описание: {{ post.description }}</p>
+        {% if user.is_authenticated and user != post.author %}
+        <a href="{% url 'users:comment_create' post.id %}">Откликнуться</a>
+        {% endif %}
+    </div>
+
+{% endblock %}

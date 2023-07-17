@@ -1,0 +1,30 @@
+{% extends 'users/base.html' %}
+
+
+{% block title %}
+Подтвердить отклик
+{% endblock %}
+
+{% block content %}
+<div class="card-body text-center my-4 card shadow-lg border-0 rounded-lg ">
+    <h3>Вы собираетесь подтвердить отклик:</h3>
+    <h6>{{ comment.created|date:'d.m.Y G:i' }}</h6>
+    <p>{{ comment.text }}</p>
+    <h6>Автор: {{ comment.author }}</h6>
+    {% if user.is_authenticated %}
+    {% if user.id != comment.post.author.id %}
+    <div>
+        <button><a href="{% url 'users:confirm' comment.id %}">Подтвердить</a></button>
+    </div>
+    {% endif %}
+    {% endif %}
+    <hr>
+
+    <h3>Объявление</h3>
+    <h4>{{ comment.post.title }}</h4>
+    <h6>Автор: {{ comment.post.author }}</h6>
+    <h6>{{ comment.post.created|date:'d.m.Y G:i' }}</h6>
+    <p>{{ comment.post.description }}</p>
+    <!-- <p>{{ comment.post.author.email }}</p> -->
+</div>
+{% endblock %}

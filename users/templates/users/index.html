@@ -1,0 +1,27 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+
+{% block content %}
+    {% if posts %}
+    <h1>Последние объявления</h1>
+    <hr>
+    {% for post in posts %}
+    <div>{{ post }}
+        <ul>
+            <li><a href="{% url 'users:post' post.id %}">{{ post.title }}</a></li>
+            <li>Описание - {{ post.description }}</li>
+            <li>Роль - {{ post.category }}</li>
+            <!-- <li>Автор - {{ post.author }}</li> -->
+        </ul>
+    </div>
+    {% endfor %}
+    {% else %}
+    <h1>Объявлений нет</h1>
+    {% endif %}
+{% endblock %}

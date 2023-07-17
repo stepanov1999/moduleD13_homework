@@ -1,0 +1,32 @@
+{% extends 'users/base.html' %}
+
+
+{% block title %}
+Мои отклики
+{% endblock %}
+
+
+{% block content %}
+<h3>Все отклики</h3>
+<hr>
+{% if comments %}
+{% for com in comments %}
+<ul>
+    <li>Объявление: {{ com.post.title }}</li>
+    {{ comment.post.title }}
+    <li>Текст: {{ com.text }}</li>
+    <li>
+        {% if com.status %}
+        Подтвержден: Да
+        {% else %}
+        Подтвержден: Нет
+        {% endif %}
+    </li>
+    <li>Дата создания: {{ com.post.created }}</li>
+    <li>Откликнулся - <strong>{{ com.post.author }}</strong></li>
+</ul>
+{% endfor %}
+{% else %}
+<p>Откликов нет</p>
+{% endif %}
+{% endblock %}
